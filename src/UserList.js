@@ -6,7 +6,7 @@ const User = React.memo(function User({ user, onRemove, onToggle }) {
       <b
         style={{
           cursor: 'pointer',
-          color: user.active ? 'green' : 'black'
+          color: user.active ? 'green' : 'black',
         }}
         onClick={() => onToggle(user.id)}
       >
@@ -14,7 +14,7 @@ const User = React.memo(function User({ user, onRemove, onToggle }) {
       </b>
       &nbsp;
       <span>({user.email})</span>
-      <button onClick={() => onRemove(user.id)}>삭제</button>
+      <button onClick={() => onRemove(user.id)}>Delete</button>
     </div>
   );
 });
@@ -22,19 +22,11 @@ const User = React.memo(function User({ user, onRemove, onToggle }) {
 function UserList({ users, onRemove, onToggle }) {
   return (
     <div>
-      {users.map(user => (
-        <User
-          user={user}
-          key={user.id}
-          onRemove={onRemove}
-          onToggle={onToggle}
-        />
+      {users.map((user) => (
+        <User user={user} key={user.id} onRemove={onRemove} onToggle={onToggle} />
       ))}
     </div>
   );
 }
 
-export default React.memo(
-  UserList,
-  (prevProps, nextProps) => prevProps.users === nextProps.users
-);
+export default React.memo(UserList, (prevProps, nextProps) => prevProps.users === nextProps.users);
