@@ -7,3 +7,4 @@
 - React.memo
 - useReducer
 - Custom Hooks
+- Context API
